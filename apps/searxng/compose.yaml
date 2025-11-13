@@ -1,0 +1,37 @@
+services:
+  redis:
+    container_name: redis
+    image: docker.io/valkey/valkey:8-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: unless-stopped
+    volumes:
+      - valkey-data:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    networks:
+      - default
+      - proxy
+    restart: unless-stopped
+    volumes:
+      - conf:/etc/searxng
+      - data:/var/cache/searxng:rw
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  data:
+  conf:
+  valkey-data:

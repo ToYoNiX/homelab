@@ -1,0 +1,20 @@
+services:
+  trilium:
+    image: triliumnext/notes:latest
+    container_name: trilium_next
+    restart: unless-stopped
+    environment:
+      - TRILIUM_DATA_DIR=/home/node/trilium-data
+    networks:
+      - proxy
+    volumes:
+      - data:/home/node/trilium-data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  data:
