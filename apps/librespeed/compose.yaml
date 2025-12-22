@@ -1,0 +1,13 @@
+services:
+  librespeedtest:
+    container_name: speedtest
+    image: ghcr.io/librespeed/speedtest:latest
+    restart: always
+    networks:
+      - proxy
+    environment:
+      MODE: standalone
+
+networks:
+  proxy:
+    external: true
