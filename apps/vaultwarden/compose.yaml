@@ -7,6 +7,17 @@ services:
       - data:/data/
     networks:
       - proxy
+    labels:
+      - docker-volume-backup.stop-during-backup=true
+
+  backup:
+    image: offen/docker-volume-backup:latest
+    restart: always
+    env_file: /mnt/ehdd/Backups/Docker/config/vaultwarden.env
+    volumes:
+      - data:/backup/my-app-backup:ro
+      - /mnt/ehdd/Backups/Docker/vaultwarden:/archive
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
   proxy:
