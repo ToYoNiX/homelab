@@ -10,6 +10,14 @@ services:
     volumes:
       - data:/data
 
+  backup:
+    image: offen/docker-volume-backup:latest
+    restart: always
+    env_file: /mnt/ehdd/Backups/Docker/config/radicale.env
+    volumes:
+      - data:/backup/my-app-backup:ro
+      - /mnt/ehdd/Backups/Docker/radicale:/archive
+
 networks:
   proxy:
     external: true
