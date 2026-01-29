@@ -32,6 +32,14 @@ services:
     healthcheck:
       disable: false
 
+  backup:
+    image: offen/docker-volume-backup:latest
+    restart: always
+    env_file: /mnt/ehdd/Backups/Docker/config/immich.env
+    volumes:
+      - library:/backup/my-app-backup:ro
+      - /mnt/ehdd/Backups/Docker/immich:/archive
+
   immich-machine-learning:
     container_name: immich_machine_learning
     # For hardware acceleration, add one of -[armnn, cuda, rocm, openvino, rknn] to the image tag.
