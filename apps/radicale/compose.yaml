@@ -1,0 +1,18 @@
+services:
+  radicale:
+    image: tomsquest/docker-radicale
+    container_name: radicale
+    networks:
+      - proxy
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    volumes:
+      - data:/data
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  data:
