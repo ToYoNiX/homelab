@@ -1,0 +1,27 @@
+services:
+  n8n:
+    container_name: n8n
+    image: n8n-ffmpeg:latest
+    restart: always
+    networks:
+      - proxy
+    environment:
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - N8N_RUNNERS_ENABLED=true
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - TZ=${GENERIC_TIMEZONE}
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ${LOCAL_FILES}:/files
+
+volumes:
+  n8n_data:
+
+networks:
+  proxy:
+    external: true
