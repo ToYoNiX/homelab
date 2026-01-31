@@ -29,6 +29,8 @@ services:
       - redis
       - database
     restart: always
+    labels:
+      - docker-volume-backup.stop-during-backup=true
     healthcheck:
       disable: false
 
@@ -39,6 +41,7 @@ services:
     volumes:
       - library:/backup/my-app-backup:ro
       - /mnt/ehdd/Backups/Docker/immich:/archive
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   immich-machine-learning:
     container_name: immich_machine_learning
@@ -64,7 +67,6 @@ services:
     restart: always
     volumes:
       - valkey-data:/data
-
 
   database:
     container_name: immich_postgres
