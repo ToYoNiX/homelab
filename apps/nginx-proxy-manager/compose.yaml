@@ -6,6 +6,7 @@ services:
     networks:
       - proxy
     ports:
+      - '81:81'
       - '443:443'
     volumes:
       - data:/data
