@@ -5,9 +5,9 @@ services:
     networks:
       - proxy
     ports:
+      - '80:80/tcp'            # Interface
       - '53:53/udp'            # DNS
       - '53:53/tcp'            # DNS TCP
-      - '444:444/tcp'          # DoH
       - '853:853/tcp'          # DoT
       - '67:67/udp'            # DHCP server
       - '68:68/udp'            # DHCP client
@@ -23,3 +23,5 @@ networks:
 volumes:
   work:
   conf:
+
+
