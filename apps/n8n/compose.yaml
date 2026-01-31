@@ -1,7 +1,7 @@
 services:
-  n8n:
+  with-ffmpeg:
+    build: ./
     container_name: n8n
-    image: n8n-ffmpeg:latest
     restart: always
     networks:
       - proxy
@@ -16,11 +16,11 @@ services:
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - TZ=${GENERIC_TIMEZONE}
     volumes:
-      - n8n_data:/home/node/.n8n
+      - data:/home/node/.n8n
       - ${LOCAL_FILES}:/files
 
 volumes:
-  n8n_data:
+  data:
 
 networks:
   proxy:
