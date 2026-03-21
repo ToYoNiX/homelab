@@ -6,14 +6,14 @@ services:
     environment:
       - TRILIUM_DATA_DIR=/home/node/trilium-data
     networks:
-      - proxy
+      - trusted_proxy
     volumes:
       - data:/home/node/trilium-data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:

@@ -16,7 +16,7 @@ services:
     container_name: searxng
     networks:
       - default
-      - proxy
+      - trusted_proxy
     restart: unless-stopped
     volumes:
       - conf:/etc/searxng
@@ -28,7 +28,7 @@ services:
         max-file: "1"
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:

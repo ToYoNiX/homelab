@@ -4,7 +4,8 @@ services:
     container_name: nginx_proxy_manager
     restart: unless-stopped
     networks:
-      - proxy
+      - trusted_proxy
+      - untrusted_proxy
     ports:
       - '81:81'
       - '443:443'
@@ -13,7 +14,9 @@ services:
       - letsencrypt:/etc/letsencrypt
 
 networks:
-  proxy:
+  trusted_proxy:
+    external: true
+  untrusted_proxy:
     external: true
 
 volumes:

@@ -24,7 +24,7 @@ services:
       - .env
     networks:
       - default
-      - proxy
+      - trusted_proxy
     depends_on:
       - redis
       - database
@@ -85,7 +85,7 @@ services:
     restart: always
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:

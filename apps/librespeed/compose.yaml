@@ -4,10 +4,10 @@ services:
     image: ghcr.io/librespeed/speedtest:latest
     restart: always
     networks:
-      - proxy
+      - trusted_proxy
     environment:
       MODE: standalone
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true

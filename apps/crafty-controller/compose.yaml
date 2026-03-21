@@ -6,7 +6,7 @@ services:
     environment:
       - TZ=Etc/UTC
     networks:
-      - proxy
+      - untrusted_proxy
     ports:
       - "8123:8123" # DYNMAP
       - "19132:19132/udp" # BEDROCK
@@ -19,7 +19,7 @@ services:
       - import:/crafty/import
 
 networks:
-  proxy:
+  untrusted_proxy:
     external: true
 
 volumes:

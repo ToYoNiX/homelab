@@ -9,7 +9,7 @@ services:
     volumes:
       - /mnt/ehdd/:/var/syncthing
     networks:
-      - proxy
+      - trusted_proxy
     ports:
       #  - 8384:8384
       - 22000:22000/tcp
@@ -18,5 +18,5 @@ services:
     restart: unless-stopped
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
