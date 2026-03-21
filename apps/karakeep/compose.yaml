@@ -10,7 +10,7 @@ services:
       - data:/data
     networks:
       - default
-      - proxy
+      - trusted_proxy
     env_file:
       - .env
     environment:
@@ -42,7 +42,7 @@ services:
       - meilisearch:/meili_data
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:

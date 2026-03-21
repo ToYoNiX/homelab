@@ -4,7 +4,7 @@ services:
     container_name: n8n
     restart: always
     networks:
-      - proxy
+      - trusted_proxy
     environment:
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
@@ -23,5 +23,5 @@ volumes:
   data:
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true

@@ -3,7 +3,7 @@ services:
     image: tomsquest/docker-radicale
     container_name: radicale
     networks:
-      - proxy
+      - trusted_proxy
     security_opt:
       - no-new-privileges:true
     restart: unless-stopped
@@ -19,7 +19,7 @@ services:
       - /mnt/ehdd/Backups/Docker/radicale:/archive
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:

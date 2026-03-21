@@ -3,7 +3,7 @@ services:
     image: adguard/adguardhome:latest
     container_name: adguard_home
     networks:
-      - proxy
+      - trusted_proxy
     ports:
       - '80:80/tcp'            # Interface
       - '53:53/udp'            # DNS
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:

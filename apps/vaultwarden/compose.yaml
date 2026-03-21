@@ -6,7 +6,7 @@ services:
     volumes:
       - data:/data/
     networks:
-      - proxy
+      - trusted_proxy
     labels:
       - docker-volume-backup.stop-during-backup=true
 
@@ -20,7 +20,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
-  proxy:
+  trusted_proxy:
     external: true
 
 volumes:
