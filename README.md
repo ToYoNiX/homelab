@@ -15,6 +15,8 @@ All services are reachable via Nginx Proxy Manager using a subdomain and a valid
 
 ![overview-diagram](assets/overview-diagram.png)
 
+for more info about the openwrt router, go [here](https://github.com/ToYoNiX/openwrt-configs).
+
 ## Services
 
 | Service | Purpose | Network |
