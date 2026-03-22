@@ -13,10 +13,10 @@ services:
   backup:
     image: offen/docker-volume-backup:latest
     restart: always
-    env_file: /mnt/ehdd/Backups/Docker/config/radicale.env
+    env_file: ${BACKUP_PATH}/.env
     volumes:
       - data:/backup/my-app-backup:ro
-      - /mnt/ehdd/Backups/Docker/radicale:/archive
+      - ${BACKUP_PATH}:/archive
 
 networks:
   trusted_proxy:

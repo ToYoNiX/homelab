@@ -37,10 +37,10 @@ services:
   backup:
     image: offen/docker-volume-backup:latest
     restart: always
-    env_file: /mnt/ehdd/Backups/Docker/config/immich.env
+    env_file: ${BACKUP_PATH}/.env
     volumes:
       - library:/backup/my-app-backup:ro
-      - /mnt/ehdd/Backups/Docker/immich:/archive
+      - ${BACKUP_PATH}:/archive
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   immich-machine-learning:

@@ -7,7 +7,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /mnt/ehdd/:/var/syncthing
+      - ${SYNCTHING_PATH}:/var/syncthing
     networks:
       - trusted_proxy
     ports:
