@@ -5,14 +5,14 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Africa/Cairo
+      - TZ=${TIMEZONE}
     networks:
       - default
       - trusted_proxy
     volumes:
       - jellyfin-config:/config
-      - /mnt/ehdd/Videos/Shows:/data/tvshows
-      - /mnt/ehdd/Videos/Movies:/data/movies
+      - ${SHOWS_PATH}:/data/tvshows
+      - ${MOVIES_PATH}:/data/movies
     restart: unless-stopped
 
   jellyseerr:
@@ -20,7 +20,7 @@ services:
     container_name: jellyseerr
     environment:
       - LOG_LEVEL=debug
-      - TZ=Africa/Cairo
+      - TZ=${TIMEZONE}
     networks:
       - default
       - untrusted_proxy
@@ -34,7 +34,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Africa/Cairo
+      - TZ=${TIMEZONE}
     networks:
       - default
       - untrusted_proxy
@@ -53,7 +53,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Africa/Cairo
+      - TZ=${TIMEZONE}
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     networks:
@@ -70,13 +70,13 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Africa/Cairo
+      - TZ=${TIMEZONE}
     networks:
       - default
       - untrusted_proxy
     volumes:
       - sonarr-config:/config
-      - /mnt/ehdd/Videos/Shows:/tv
+      - ${SHOWS_PATH}:/tv
       - qbittorrent-downloads:/downloads
     restart: unless-stopped
 
@@ -86,13 +86,13 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Africa/Cairo
+      - TZ=${TIMEZONE}
     networks:
       - default
       - untrusted_proxy
     volumes:
       - radarr-config:/config
-      - /mnt/ehdd/Videos/Movies:/movies
+      - ${MOVIES_PATH}:/movies
       - qbittorrent-downloads:/downloads
     restart: unless-stopped
 

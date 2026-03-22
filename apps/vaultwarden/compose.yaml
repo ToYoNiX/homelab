@@ -13,10 +13,10 @@ services:
   backup:
     image: offen/docker-volume-backup:latest
     restart: always
-    env_file: /mnt/ehdd/Backups/Docker/config/vaultwarden.env
+    env_file: ${BACKUP_PATH}/.env
     volumes:
       - data:/backup/my-app-backup:ro
-      - /mnt/ehdd/Backups/Docker/vaultwarden:/archive
+      - ${BACKUP_PATH}:/archive
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
