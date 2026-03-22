@@ -8,10 +8,6 @@ Services are containerized and managed independently via Docker Compose, exposed
 
 ## Network Architecture
 
-| Property | Value |
-|----------|-------|
-| Docker networks | `trusted_proxy`, `untrusted_proxy` |
-
 All services are reachable via Nginx Proxy Manager using a subdomain and a valid SSL certificate. The network is segmented into two Docker bridge networks, both connected to the reverse proxy:
 
 - **trusted_proxy** — services that handle personal or sensitive data
@@ -38,7 +34,7 @@ All services are reachable via Nginx Proxy Manager using a subdomain and a valid
 | Servarr | Media automation stack (Radarr, Sonarr, Prowlarr, Jellyseer, Qbittorrent) | untrusted |
 | Crafty Controller | Minecraft server management | untrusted |
 
-Each service is self-contained. Configuration, volumes, and environment variables are defined within each service directory. Services within the same Docker Compose file communicate over the default network created automatically by Docker Compose. Cross-service communication, where needed, goes through the shared `trusted-proxy` or `untrusted-proxy` networks, both of which are attached to Nginx Proxy Manager.
+Each service is self-contained. Configuration, volumes, and environment variables are defined within each service directory. Services within the same Docker Compose file communicate over the default network created automatically by Docker Compose.
 
 ## Deployment
 
