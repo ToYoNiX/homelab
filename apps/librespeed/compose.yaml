@@ -1,6 +1,6 @@
 services:
   librespeedtest:
-    container_name: speedtest
+    container_name: librespeedtest
     image: ghcr.io/librespeed/speedtest:latest
     restart: always
     networks:
