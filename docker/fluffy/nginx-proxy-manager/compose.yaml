@@ -1,0 +1,24 @@
+services:
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx_proxy_manager-bk
+    restart: unless-stopped
+    networks:
+      - trusted_proxy
+      - untrusted_proxy
+    ports:
+      - '81:81'
+      - '443:443'
+    volumes:
+      - data:/data
+      - letsencrypt:/etc/letsencrypt
+
+networks:
+  trusted_proxy:
+    external: true
+  untrusted_proxy:
+    external: true
+
+volumes:
+  data:
+  letsencrypt:

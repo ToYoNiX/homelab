@@ -13,7 +13,7 @@ services:
   backup:
     image: offen/docker-volume-backup:latest
     restart: always
-    env_file: ${BACKUP_PATH}/.env
+    env_file: ./.bk.env
     volumes:
       - data:/backup/my-app-backup:ro
       - ${BACKUP_PATH}:/archive

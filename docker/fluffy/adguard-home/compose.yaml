@@ -1,0 +1,27 @@
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome-bk
+    networks:
+      - trusted_proxy
+    ports:
+      - '80:80/tcp'            # Interface
+      - '53:53/udp'            # DNS
+      - '53:53/tcp'            # DNS TCP
+      - '853:853/tcp'          # DoT
+      - '67:67/udp'            # DHCP server
+      - '68:68/udp'            # DHCP client
+    volumes:
+      - work:/opt/adguardhome/work
+      - conf:/opt/adguardhome/conf
+    restart: unless-stopped
+
+networks:
+  trusted_proxy:
+    external: true
+
+volumes:
+  work:
+  conf:
+
+
