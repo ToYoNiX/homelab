@@ -23,7 +23,7 @@ services:
     networks:
       - trusted_proxy
     volumes:
-      - ./sync-config.yaml:/config/adguardhome-sync.yaml
+      - ./.sync-config.yaml:/config/adguardhome-sync.yaml
 
 networks:
   trusted_proxy:
