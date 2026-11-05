@@ -16,7 +16,7 @@ services:
     env_file: ./.bk.env
     volumes:
       - data:/backup/my-app-backup:ro
-      - ${BACKUP_PATH}:/archive
+      - ${BACKUP_PATH}/radicale:/archive
 
 networks:
   trusted_proxy:

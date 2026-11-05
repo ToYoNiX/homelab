@@ -40,7 +40,7 @@ services:
     env_file: ./.bk.env
     volumes:
       - library:/backup/my-app-backup:ro
-      - ${BACKUP_PATH}:/archive
+      - ${BACKUP_PATH}/immich:/archive
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   immich-machine-learning:
