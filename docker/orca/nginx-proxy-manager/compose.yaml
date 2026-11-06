@@ -13,6 +13,14 @@ services:
       - data:/data
       - letsencrypt:/etc/letsencrypt
 
+  npm-sync:
+    image: ghcr.io/toyonix/npm-sync:latest
+    restart: unless-stopped
+    networks:
+      - trusted_proxy
+    volumes:
+      - ./.sync-config.yaml:/config/config.yaml:ro
+
 networks:
   trusted_proxy:
     external: true
