@@ -41,6 +41,8 @@ services:
     volumes:
       - prowlarr-config:/config
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
