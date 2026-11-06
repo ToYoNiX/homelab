@@ -104,7 +104,7 @@ networks:
 
 volumes:
   jellyfin-config:
-  jellyseerr-config:
+  seerr-config:
   prowlarr-config:
   qbittorrent-config:
   qbittorrent-downloads:
