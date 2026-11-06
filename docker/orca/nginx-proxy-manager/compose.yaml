@@ -15,6 +15,7 @@ services:
 
   npm-sync:
     image: ghcr.io/toyonix/npm-sync:latest
+    container_name: nginx_proxy_manager-sync
     restart: unless-stopped
     networks:
       - trusted_proxy
