@@ -7,8 +7,9 @@ services:
       # If you want to mount a custom directory, change the volume mapping to:
       # - /path/to/your/directory:/data
       - data:/data
-    ports:
-      - 3000:3000
+    networks:
+      - default
+      - trusted_proxy
     env_file:
       - .env
     environment:
@@ -38,6 +39,10 @@ services:
       MEILI_NO_ANALYTICS: "true"
     volumes:
       - meilisearch:/meili_data
+
+networks:
+  trusted_proxy:
+    external: true
 
 volumes:
   meilisearch:
