@@ -81,6 +81,8 @@ services:
       - ${SHOWS_PATH}:/tv
       - qbittorrent-downloads:/downloads
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -97,6 +99,8 @@ services:
       - ${MOVIES_PATH}:/movies
       - qbittorrent-downloads:/downloads
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
 
 networks:
   trusted_proxy:
