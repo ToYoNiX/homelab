@@ -15,7 +15,7 @@ services:
       - ${MOVIES_PATH}:/data/movies
     restart: unless-stopped
 
-  jellyseerr:
+  seerr:
     image: ghcr.io/seerr-team/seerr:latest
     container_name: seerr
     environment:
