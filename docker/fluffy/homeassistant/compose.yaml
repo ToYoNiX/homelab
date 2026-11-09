@@ -8,6 +8,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - config:/config
+    restart: unless-stopped
 
 networks:
   trusted_proxy:
