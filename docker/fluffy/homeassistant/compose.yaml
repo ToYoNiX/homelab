@@ -1,12 +1,13 @@
 services:
-  image: ghcr.io/home-assistant/home-assistant:stable
-  container_name: homeassistant
-  networks:
-    - trusted_proxy
-  environment:
-    - TZ=${TIMEZONE}
-  volumes:
-    - config:/config
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    networks:
+      - trusted_proxy
+    environment:
+      - TZ=${TIMEZONE}
+    volumes:
+      - config:/config
 
 networks:
   trusted_proxy:
