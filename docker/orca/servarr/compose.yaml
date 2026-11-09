@@ -13,6 +13,7 @@ services:
       - jellyfin-config:/config
       - ${SHOWS_PATH}:/data/tvshows
       - ${MOVIES_PATH}:/data/movies
+      - ${QURAN_PATH}:/data/quran
     restart: unless-stopped
 
   seerr:
