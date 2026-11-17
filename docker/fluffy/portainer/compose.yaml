@@ -7,8 +7,6 @@ services:
       - trusted_proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    dns:
-    - 8.8.8.8
 
 networks:
   trusted_proxy:
