@@ -3,6 +3,8 @@ services:
     container_name: portainer-fluffy-agent
     image: portainer/agent:alpine-sts
     restart: always
+    environment:
+      AGENT_CLUSTER_ADDR: portainer-fluffy-agent
     networks:
       - trusted_proxy
     volumes:
