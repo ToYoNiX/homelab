@@ -1,0 +1,18 @@
+services:
+  portainer:
+    container_name: portainer-server
+    image: portainer/portainer-ce:lts
+    restart: always
+    networks:
+      - trusted_proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+
+networks:
+  trusted_proxy:
+    external: true
+
+volumes:
+  data:
+

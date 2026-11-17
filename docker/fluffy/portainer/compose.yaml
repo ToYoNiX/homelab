@@ -1,0 +1,14 @@
+services:
+  portainer:
+    container_name: portainer-fluffy-agent
+    image: portainer/agent:alpine-sts
+    restart: always
+    networks:
+      - trusted_proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  trusted_proxy:
+    external: true
+
