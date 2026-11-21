@@ -6,7 +6,7 @@ services:
     networks:
       - trusted_proxy
     volumes:
-      data:/data
+      - data:/data
 
 networks:
   trusted_proxy:
