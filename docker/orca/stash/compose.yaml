@@ -1,0 +1,16 @@
+services:
+  stash:
+    image: ghcr.io/toyonix/stash:latest
+    container_name: stash
+    restart: always
+    networks:
+      - trusted_proxy
+    volumes:
+      data:/data
+
+networks:
+  trusted_proxy:
+    external: true
+
+volumes:
+  data:
