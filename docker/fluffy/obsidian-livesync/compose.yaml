@@ -11,7 +11,36 @@ services:
       - config:/opt/couchdb/etc/local.d
       - ./config.ini:/opt/couchdb/etc/local.ini
     networks:
+      - default
       - trusted_proxy
+    healthcheck:
+      # Test with admin credentials — ensures both CouchDB is up AND auth is ready.
+      # Expand quoted container variables so shell characters in credentials stay literal.
+      test:
+        - "CMD-SHELL"
+        - >-
+          curl -fSs --max-time 4 --user "$${COUCHDB_USER}:$${COUCHDB_PASSWORD}"
+          http://127.0.0.1:5984/_session | grep -q "_admin"
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 20s
+
+  couchdb-init:
+    image: curlimages/curl:latest
+    container_name: livesync-init
+    restart: on-failure
+    depends_on:
+      couchdb:
+        condition: service_healthy
+    environment:
+      COUCHDB_INTERNAL_URL: http://couchdb:5984
+      COUCHDB_USER: ${COUCHDB_USER}
+      COUCHDB_PASSWORD: ${COUCHDB_PASSWORD}
+      COUCHDB_DATABASE: ${COUCHDB_DATABASE}
+    volumes:
+      - ./scripts/couchdb-init.sh:/couchdb-init.sh:ro
+    entrypoint: ["sh", "/couchdb-init.sh"]
 
 networks:
   trusted_proxy:
