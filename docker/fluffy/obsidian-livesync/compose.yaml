@@ -1,0 +1,23 @@
+services:
+  couchdb:
+    image: couchdb:latest
+    container_name: obsidian-livesync
+    restart: always
+    environment:
+      COUCHDB_USER: ${COUCHDB_USER:?Set COUCHDB_USER in .env}
+      COUCHDB_PASSWORD: ${COUCHDB_PASSWORD:?Set COUCHDB_PASSWORD in .env}
+    volumes:
+      - data:/opt/couchdb/data
+      - config:/opt/couchdb/etc/local.d
+      - ./config.ini:/opt/couchdb/etc/local.ini
+    networks:
+      - trusted_proxy
+
+networks:
+  trusted_proxy:
+    external: true
+
+volumes:
+  data:
+  config:
+
